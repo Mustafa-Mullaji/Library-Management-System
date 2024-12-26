@@ -32,6 +32,14 @@ class TestLibrary(unittest.TestCase):
          library.add_book(book1)
          with self.assertRaises(ValueError):  
           library.add_book(book2)
+    
+    def test_borrow_book(self):
+       library = Library()
+       book = Book("54321", "To Kill a Mockingbird", "Harper Lee", 1960)
+       library.add_book(book)
+       result = library.borrow_book("54321")   
+       self.assertTrue(result)
+       self.assertTrue(book.is_borrowed)
 
 
 if __name__ == "__main__":
