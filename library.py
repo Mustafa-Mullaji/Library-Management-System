@@ -14,6 +14,9 @@ class Library:
         self.books = []
 
     def add_book(self, book):
-       self.books.append(book)
+      if any(b.isbn == book.isbn for b in self.books):
+        raise ValueError(f"Book with ISBN {book.isbn} already exists.")
+      self.books.append(book)
+
     
 
