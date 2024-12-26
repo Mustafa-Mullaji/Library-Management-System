@@ -1,5 +1,7 @@
 import unittest
 from library import Library, Book 
+import os
+import subprocess
 
 # Test class for the Library Management System
 class TestLibrary(unittest.TestCase):
@@ -75,6 +77,18 @@ class TestLibrary(unittest.TestCase):
         self.assertEqual(len(available_books), 1)  
         self.assertEqual(available_books[0].isbn, "67890")
 
+def run_tests():
+    """Runs tests and generates an HTML report."""
+    print("Running tests...")
+    try:
+        # Ensure pytest is used to run the tests
+        subprocess.run(["pytest", "test_library.py", "--html=report.html", "--self-contained-html"], check=True)
+        print("Test report generated: report.html")
+    except subprocess.CalledProcessError as e:
+        print(f"Error during test execution: {e}")
+
+
 # Run the test cases
 if __name__ == "__main__":
     unittest.main()
+    run_tests() 
