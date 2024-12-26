@@ -19,11 +19,14 @@ class Library:
       self.books.append(book)
     
     def borrow_book(self, isbn):
-      for book in self.books:
+     for book in self.books:
         if book.isbn == isbn:
+            if book.is_borrowed:
+                raise ValueError(f"Book with ISBN {isbn} is already borrowed.")
             book.is_borrowed = True
             return True
-      return False
+     raise ValueError(f"Book with ISBN {isbn} not found.")
+
 
     
 
