@@ -56,6 +56,17 @@ class TestLibrary(unittest.TestCase):
       with self.assertRaises(ValueError): 
         library.return_book("12345")
 
+    def test_view_available_books(self):
+        library = Library()
+        book1 = Book("12345", "Valid Book", "Author", 2000)
+        book2 = Book("67890", "Another Book", "Author", 2001)
+        library.add_book(book1)
+        library.add_book(book2)
+        library.borrow_book("12345")
+        available_books = library.view_available_books()
+        self.assertEqual(len(available_books), 1)
+        self.assertEqual(available_books[0].isbn, "67890")
+
 
 
 if __name__ == "__main__":
