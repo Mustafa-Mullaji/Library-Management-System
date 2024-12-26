@@ -53,7 +53,7 @@ class TestLibrary(unittest.TestCase):
       library = Library()
       book = Book("12345", "The Great Gatsby", "F. Scott Fitzgerald", 1925)
       library.add_book(book)
-      with self.assertRaises(ValueError):  # Expected to fail
+      with self.assertRaises(ValueError): 
         library.return_book("12345")
 
 
